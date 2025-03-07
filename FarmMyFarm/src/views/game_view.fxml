@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ChoiceBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.GridPane?>
+
+<AnchorPane xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.GameController">
+
+    <Label fx:id="moneyLabel" layoutX="20" layoutY="20" text="Pièces: 500" />
+
+    <GridPane fx:id="farmGrid" layoutX="50" layoutY="50" prefHeight="400" prefWidth="600" />
+
+    <Label layoutX="20" layoutY="470" text="Sélectionner une graine :" />
+    <ChoiceBox fx:id="seedChoiceBox" layoutX="180" layoutY="470" />
+    <Button layoutX="350" layoutY="470" onAction="#plantCrop" text="Planter" />
+
+    <Label layoutX="20" layoutY="500" text="Inventaire :" />
+    <TableView fx:id="inventoryTable" layoutX="20" layoutY="520" prefHeight="150" prefWidth="300.0">
+        <columns>
+            <TableColumn fx:id="columnItem" text="Récolte" />
+            <TableColumn fx:id="columnQuantity" text="Quantité" />
+        </columns>
+    </TableView>
+
+    <Button layoutX="20" layoutY="680" onAction="#sellCrops" text="Vendre Récoltes" />
+
+    <Button layoutX="600" layoutY="20" onAction="#openShop" text="Ouvrir Magasin" />
+
+    <AnchorPane fx:id="shopPane" layoutX="200" layoutY="100" prefHeight="300" prefWidth="400" style="-fx-background-color: white; -fx-border-color: black;" visible="false">
+        <Label layoutX="170" layoutY="10" text="Magasin" />
+        <Button layoutX="350" layoutY="10" onAction="#closeShop" text="Fermer" />
+        <TableView fx:id="shopTable" layoutX="20" layoutY="50" prefHeight="200" prefWidth="360">
+            <columns>
+                <TableColumn fx:id="columnShopImage" text="Image" />
+                <TableColumn fx:id="columnShopItem" text="Nom" />
+                <TableColumn fx:id="columnShopPrice" text="Prix" />
+            </columns>
+        </TableView>
+        <Button layoutX="150" layoutY="260" onAction="#buyItem" text="Acheter" />
+    </AnchorPane>
+</AnchorPane>

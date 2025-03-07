@@ -1,0 +1,26 @@
+/* Style global */
+.root {
+    -fx-background-color: #2e3b4e; /* Couleur de fond de la fenêtre */
+    -fx-font-family: "Arial";
+    -fx-font-size: 16px;
+}
+
+/* Style pour le bouton */
+.button {
+    -fx-background-color: #7d9e74;
+    -fx-text-fill: white;
+    -fx-font-size: 14px;
+    -fx-padding: 10px 20px;
+    -fx-border-radius: 5px;
+    -fx-cursor: hand;
+}
+
+.button:hover {
+    -fx-background-color: #6a7a61;
+}
+
+/* Style pour le label */
+.label {
+    -fx-text-fill: #ffffff;
+    -fx-font-size: 18px;
+}
