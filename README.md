@@ -9,6 +9,7 @@ Bienvenue sur FarmMyFarm, un jeu de gestion de ferme développé en JavaFX. 🐄
 🎮 Interface intuitive : Créée avec JavaFX, avec animations et interactions fluides.
 
 📷 Aperçu du Jeu
+![Aperçu du jeu](https://github.com/Mourad9101/FarmMyFarm-Game/blob/main/screenshot.png)
 
 
 
