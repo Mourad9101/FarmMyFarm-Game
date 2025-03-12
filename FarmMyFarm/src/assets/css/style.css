@@ -1,11 +1,9 @@
-/* Style global */
 .root {
-    -fx-background-color: #2e3b4e; /* Couleur de fond de la fenêtre */
+    -fx-background-color: #D2B48C;
     -fx-font-family: "Arial";
     -fx-font-size: 16px;
 }
 
-/* Style pour le bouton */
 .button {
     -fx-background-color: #7d9e74;
     -fx-text-fill: white;
@@ -19,7 +17,6 @@
     -fx-background-color: #6a7a61;
 }
 
-/* Style pour le label */
 .label {
     -fx-text-fill: #ffffff;
     -fx-font-size: 18px;

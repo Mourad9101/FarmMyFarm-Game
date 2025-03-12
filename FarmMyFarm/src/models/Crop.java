@@ -2,7 +2,8 @@ package models;
 
 import javafx.scene.image.Image;
 
-public class Crop {
+
+public class Crop implements Savable {
     private String name;
     private int cost;
     private int harvestValue;
@@ -30,11 +31,6 @@ public class Crop {
     public String getName() {
         return name; }
 
-    public int getCost() {
-        return cost; }
-
-    public int getHarvestValue() {
-        return harvestValue; }
 
     public int getGrowthTime() {
         return growthTime; }

@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
-public class Inventory {
+public class Inventory implements Savable {
     private HashMap<String, InventoryItem> storage;
 
     public Inventory() {
@@ -16,14 +16,29 @@ public class Inventory {
         if (item != null) {
             item.setQuantity(item.getQuantity() + quantity);
         } else {
-            item = new InventoryItem(name, quantity, type, imagePath);
+            item = new InventoryItem(name, quantity, type,null);
             storage.put(name, item);
         }
     }
 
-    public int getQuantity(String name) {
-        InventoryItem item = storage.get(name);
-        return item != null ? item.getQuantity() : 0;
+    public void addItem(InventoryItem item) {
+        InventoryItem existingItem = storage.get(item.getName());
+        if (existingItem != null) {
+            existingItem.setQuantity(existingItem.getQuantity() + item.getQuantity());
+        } else {
+            storage.put(item.getName(), item);
+        }
+    }
+
+
+    public void addItem(Animal animal, int quantity) {
+        InventoryItem item = storage.get(animal.getName());
+        if (item != null) {
+            item.setQuantity(item.getQuantity() + quantity);
+        } else {
+            item = new InventoryItem(animal.getName(), quantity, "animal", animal);
+            storage.put(animal.getName(), item);
+        }
     }
 
     public boolean removeItem(String name, int quantity) {
@@ -46,7 +61,6 @@ public class Inventory {
         return new ArrayList<>(storage.values());
     }
 
-    public void clear() {
-        storage.clear();
-    }
+
+
 }

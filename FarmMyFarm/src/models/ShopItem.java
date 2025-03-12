@@ -10,7 +10,11 @@ public class ShopItem {
     public ShopItem(String name, int price, String imagePath) {
         this.name = name;
         this.price = price;
-        this.icon = new Image(getClass().getResourceAsStream(imagePath));
+        try {
+            this.icon = new Image(getClass().getResourceAsStream(imagePath));
+        } catch (Exception e) {
+            this.icon = new Image(getClass().getResourceAsStream("/assets/images/icons/default.png"));
+        }
     }
 
     public String getName() {

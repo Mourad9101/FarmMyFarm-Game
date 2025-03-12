@@ -8,38 +8,89 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.GridPane?>
 
-<AnchorPane xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.GameController">
+<AnchorPane xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="controllers.GameController"
+            style="-fx-background-color: #D2B48C;">
 
-    <Label fx:id="moneyLabel" layoutX="20" layoutY="20" text="Pièces: 500" />
+    <!-- Gestion de la ferme -->
+    <Label fx:id="moneyLabel" layoutX="20" layoutY="20" text="💰 Pièces: 500" />
+    <Button layoutX="400" layoutY="20" onAction="#saveFarmState" text="💾 Sauvegarder" />
+    <Button layoutX="500" layoutY="20" onAction="#loadFarmState" text="📂 Charger" />
 
+    <!-- Grille de la ferme -->
     <GridPane fx:id="farmGrid" layoutX="50" layoutY="50" prefHeight="400" prefWidth="600" />
 
-    <Label layoutX="20" layoutY="470" text="Sélectionner une graine :" />
+    <!-- Plantation -->
+    <Label layoutX="20" layoutY="470" text="🌱 Sélectionner une graine :" />
     <ChoiceBox fx:id="seedChoiceBox" layoutX="180" layoutY="470" />
-    <Button layoutX="350" layoutY="470" onAction="#plantCrop" text="Planter" />
+    <Button layoutX="350" layoutY="470" onAction="#plantCrop" text="🌱 Planter" />
 
-    <Label layoutX="20" layoutY="500" text="Inventaire :" />
-    <TableView fx:id="inventoryTable" layoutX="20" layoutY="520" prefHeight="150" prefWidth="300.0">
+    <!-- Inventaire -->
+    <Label layoutX="20" layoutY="500" text="📦 Inventaire :" />
+    <TableView fx:id="inventoryTable" layoutX="20" layoutY="520" prefHeight="150" prefWidth="300">
         <columns>
-            <TableColumn fx:id="columnItem" text="Récolte" />
-            <TableColumn fx:id="columnQuantity" text="Quantité" />
+            <TableColumn fx:id="columnItem" prefWidth="145.0" text="Récolte" />
+            <TableColumn fx:id="columnQuantity" prefWidth="154.0" text="Quantité" />
         </columns>
     </TableView>
+    <Button layoutX="20" layoutY="680" onAction="#sellCrops" text="💰 Vendre Récoltes" />
 
-    <Button layoutX="20" layoutY="680" onAction="#sellCrops" text="Vendre Récoltes" />
-
-    <Button layoutX="600" layoutY="20" onAction="#openShop" text="Ouvrir Magasin" />
-
-    <AnchorPane fx:id="shopPane" layoutX="200" layoutY="100" prefHeight="300" prefWidth="400" style="-fx-background-color: white; -fx-border-color: black;" visible="false">
-        <Label layoutX="170" layoutY="10" text="Magasin" />
-        <Button layoutX="350" layoutY="10" onAction="#closeShop" text="Fermer" />
+    <!-- Magasin -->
+    <Button layoutX="600" layoutY="20" onAction="#openShop" text="🛒 Ouvrir Magasin" />
+    <AnchorPane fx:id="shopPane" layoutX="200" layoutY="100" prefHeight="300" prefWidth="400"
+                style="-fx-background-color: white; -fx-border-color: black;" visible="false">
+        <Label layoutX="170" layoutY="10" text="🛍 Magasin" />
+        <Button layoutX="350" layoutY="10" onAction="#closeShop" text="❌ Fermer" />
         <TableView fx:id="shopTable" layoutX="20" layoutY="50" prefHeight="200" prefWidth="360">
             <columns>
-                <TableColumn fx:id="columnShopImage" text="Image" />
-                <TableColumn fx:id="columnShopItem" text="Nom" />
-                <TableColumn fx:id="columnShopPrice" text="Prix" />
+                <TableColumn fx:id="columnShopImage" prefWidth="50" text="🖼 Image" />
+                <TableColumn fx:id="columnShopItem" text="📦 Nom" />
+                <TableColumn fx:id="columnShopPrice" text="💰 Prix" />
             </columns>
         </TableView>
-        <Button layoutX="150" layoutY="260" onAction="#buyItem" text="Acheter" />
+        <Button layoutX="150" layoutY="260" onAction="#buyItem" text="🛒 Acheter" />
     </AnchorPane>
+
+    <!-- Tableau de Bord Financier -->
+    <AnchorPane layoutX="700" layoutY="50" prefHeight="180" prefWidth="300"
+                style="-fx-background-color: #f4f4f4; -fx-border-color: black;">
+        <Label layoutX="10" layoutY="10" text="📊 Tableau de Bord Financier" style="-fx-font-weight: bold;" />
+
+        <Label layoutX="10" layoutY="40" text="💰 Solde Actuel :" />
+        <Label fx:id="labelBalance" layoutX="150" layoutY="40" text="500" />
+
+        <Label layoutX="10" layoutY="70" text="📈 Revenus Totaux :" />
+        <Label fx:id="labelTotalRevenue" layoutX="150" layoutY="70" text="0" />
+
+        <Label layoutX="10" layoutY="100" text="📉 Dépenses Totales :" />
+        <Label fx:id="labelTotalExpenses" layoutX="150" layoutY="100" text="0" />
+
+        <Label layoutX="10" layoutY="130" text="⚖️ Bénéfice Net :" />
+        <Label fx:id="labelNetProfit" layoutX="150" layoutY="130" text="0" />
+    </AnchorPane>
+
+    <!-- Indication de la météo sous le tableau de bord -->
+    <AnchorPane layoutX="700" layoutY="240" prefHeight="40" prefWidth="300"
+                style="-fx-background-color: #fff4c2; -fx-border-color: black; -fx-border-radius: 5; -fx-background-radius: 5;">
+        <Label fx:id="weatherLabel" layoutX="10" layoutY="10" text="☀️ Météo : Soleil"
+               style="-fx-font-size: 14px; -fx-font-weight: bold; -fx-text-fill: #333;" />
+    </AnchorPane>
+
+    <!-- Gestion des animaux  -->
+    <AnchorPane layoutX="700" layoutY="290" prefHeight="250" prefWidth="300"
+                style="-fx-background-color: #eaf4fc; -fx-border-color: black;">
+        <Label layoutX="10" layoutY="10" text="🐄 Gestion des Animaux" style="-fx-font-weight: bold;" />
+
+        <Label layoutX="10" layoutY="40" text="Sélectionner un animal :" />
+        <ChoiceBox fx:id="animalChoiceBox" layoutX="150" layoutY="40" />
+
+        <Button layoutX="10" layoutY="80" onAction="#buyAnimal" text="🐮 Acheter Animal" />
+        <Button layoutX="160" layoutY="80" onAction="#sellAnimals" text="💰 Vendre Animal" />
+
+        <Button layoutX="10" layoutY="120" onAction="#feedAnimal" text="🥕 Nourrir Animal" />
+        <Button layoutX="160" layoutY="120" onAction="#collectAnimalProduct" text="🧺 Récolter Produit" />
+
+        <Button layoutX="10" layoutY="160" onAction="#sellAnimalProducts" text="💰 Vendre Produits" />
+    </AnchorPane>
+
 </AnchorPane>

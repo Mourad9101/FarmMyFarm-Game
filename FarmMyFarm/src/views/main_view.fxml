@@ -7,14 +7,11 @@
 
 <StackPane prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.MainController" stylesheets="@../assets/css/style.css">
    <children>
-      <!-- Arrière-plan qui prend toute la fenêtre -->
       <ImageView fitWidth="800.0" fitHeight="600.0" preserveRatio="false">
          <image>
             <Image url="@../assets/images/background.jpeg"/>
          </image>
       </ImageView>
-
-      <!-- Bouton Démarrer -->
       <Button text="Démarrer" onAction="#handleStartButton" prefHeight="40.0" prefWidth="184.0"/>
    </children>
 </StackPane>

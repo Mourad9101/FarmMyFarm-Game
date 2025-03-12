@@ -12,19 +12,12 @@ import javafx.event.ActionEvent;
 public class MainController {
 
     @FXML
-    private Button startButton;
-
-    @FXML
     public void handleStartButton(ActionEvent event) throws IOException {
         Parent gameRoot = FXMLLoader.load(getClass().getResource("/views/game_view.fxml"));
 
         Stage stage = (Stage) ((Button) event.getSource()).getScene().getWindow();
-        stage.setScene(new Scene(gameRoot, 800, 800));
+        stage.setScene(new Scene(gameRoot, 1500, 1500));
         stage.show();
-    }
-
-    @FXML
-    public void initialize() {
     }
 }
 
