@@ -21,6 +21,7 @@ Exécuter la classe Main.java pour lancer le jeu.
 📝 Technologies utilisées
 Langage : Java 23.0.2
 Framework : JavaFX
+Interface graphique : SceneBuilder
 Gestion du projet : GitHub
 📌 Auteur
 Développé par Mourad9101.
